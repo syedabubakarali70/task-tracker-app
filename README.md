@@ -41,7 +41,7 @@ To set up and run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/task-tracker-app.git
+   git clone https://github.com/syedabubakarali70/task-tracker-app.git
    ```
 
 2. Navigate to the project directory:
