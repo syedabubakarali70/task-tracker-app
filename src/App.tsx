@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import TaskInput from "./components/TaskInput";
+import { useReducer } from "react";
+import TaskReducer, { Task } from "./lib/TaskReducer";
+import TaskList from "./components/TaskList";
+import { ThemeToggle } from "./components/Theme-toggle";
+import { Separator } from "@/components/ui/separator";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const initialState: Task[] = [];
+const App = () => {
+  const [tasks, dispatch] = useReducer(TaskReducer, initialState);
+  console.log(tasks);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="w-[100%] h-[100%] flex flex-col items-center mx-auto font-montserrat">
+      <div className="w-[100%]  max-w-screen-md flex justify-between items-center px-4 py-2">
+        <h1 className="text-4xl py-2 font-bold">Task tracker</h1>
+        <ThemeToggle />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <Separator />
 
-export default App
+      <div className="px-10 w-full my-10  max-w-screen-md">
+        <TaskInput dispatch={dispatch} />
+        <TaskList tasks={tasks} dispatch={dispatch} />
+      </div>
+    </div>
+  );
+};
+
+export default App;
