@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, useRef, useEffect } from "react";
 import { Action } from "@/lib/TaskReducer";
-let id = 1;
 
 export default function TaskInput({
   dispatch,
@@ -19,13 +18,13 @@ export default function TaskInput({
   const isEmpty = taskInput.trim() === "";
   const handleAddTask = () => {
     if (!isEmpty) {
-      dispatch({ type: "add", payload: { id: id++, name: taskInput } });
+      dispatch({ type: "add", payload:taskInput});
       setTaskInput("");
       inputRef.current?.focus();
     }
   };
   return (
-    <div className="flex w-full max-w-screen-md items-center space-x-2">
+    <div className="flex w-full max-w-screen-md items-center space-x-2 drop-shadow-md">
       <Input
         type="text"
         placeholder="Add Task..."

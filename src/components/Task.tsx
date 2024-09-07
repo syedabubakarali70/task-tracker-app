@@ -9,11 +9,11 @@ const Task = ({
   dispatch: (action: Action) => void;
 }) => {
   return (
-    <div className="w-full flex justify-between border-2  rounded-lg mb-2 first:mt-4 items-center">
-      <div className="px-2 py-1 text-sm font-semibold">{task.name}</div>
+    <div className="w-full flex justify-between border rounded-lg mb-2 first:mt-4 items-center drop-shadow-xl ">
+      <div className="px-2 py-1 text-base text-muted-foreground w-full hover:text-secondary-foreground">{task.name}</div>
       <Button
         variant={"destructive"}
-        onClick={() => dispatch({ type: "remove", payload: task })}
+        onClick={() => dispatch({ type: "remove", payload: task.id })}
       >
         <Cross1Icon />
       </Button>
